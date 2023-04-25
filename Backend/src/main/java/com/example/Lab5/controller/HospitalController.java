@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping(path = "/hospitals")
 public class HospitalController {
@@ -17,12 +17,12 @@ public class HospitalController {
         this.service = service;
 
     }
-    @CrossOrigin(origins = "http://localhost:8080")
+
     @GetMapping
     List<HospitalDTO> all(){
         return service.all();
     }
-    @CrossOrigin(origins = "http://localhost:8080")
+
     @GetMapping("/filter")
     List<HospitalWithDoctorSalaryDTO> orderHospitalsByLowestDoctorSalary(){
         List<Pair<Hospital, Doctor>> result=service.orderHospitalsByHighestDoctorSalary();
@@ -32,29 +32,29 @@ public class HospitalController {
         }
         return toReturn;
     }
-    @CrossOrigin(origins = "http://localhost:8080")
+
     @PostMapping("/{id}")
     void bulkAddDoctors(@RequestBody List<LongDTO> ids,@PathVariable Long id){
         service.bulkAddDoctors(ids,id);
     }
-    @CrossOrigin(origins = "http://localhost:8080")
+
     @PostMapping
     Hospital newHospital(@RequestBody Hospital newHospital){
         return service.newHospital(newHospital);
     }
-    @CrossOrigin(origins = "http://localhost:8080")
+
     @GetMapping("/{id}")
     HospitalDTOWithAllData one(@PathVariable Long id){
         Hospital h= service.one(id);
         return new HospitalDTOWithAllData(h);
 
     }
-    @CrossOrigin(origins = "http://localhost:8080")
+
     @PutMapping("/{id}")
     Hospital replaceHospital(@RequestBody Hospital newHospital,@PathVariable Long id){
         return service.replaceHospital(newHospital,id);
     }
-    @CrossOrigin(origins = "http://localhost:8080")
+
     @DeleteMapping("/{id}")
     void deleteHospital(@PathVariable Long id){
         service.deleteHospital(id);
