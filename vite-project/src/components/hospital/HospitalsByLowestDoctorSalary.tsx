@@ -8,12 +8,10 @@ import {
     TableBody,
     CircularProgress,
     Container,
-    IconButton,
-    Tooltip, Button
 } from "@mui/material";
 
 
-import React, {useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import {BACKEND_API_URL} from "../../constants";
 import axios from "axios";
 import { Hospital } from "../../models/Hospital";

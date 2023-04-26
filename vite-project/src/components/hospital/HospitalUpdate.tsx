@@ -4,7 +4,7 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import {BACKEND_API_URL} from "../../constants";
 import {Container} from "@mui/system";
-import {Button, Card, CardActions, CardContent, IconButton, TextField} from "@mui/material";
+import {Button, Card,  CardContent, IconButton, TextField} from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { Hospital } from "../../models/Hospital";
 
@@ -24,7 +24,7 @@ export const HospitalUpdate = () => {
         numberOfBeds:0,
     });
 
-    const [loading, setLoading] = useState(false);
+    const [, setLoading] = useState(false);
 
 
     useEffect(() => {
@@ -49,7 +49,7 @@ export const HospitalUpdate = () => {
         event.preventDefault();
         try {
             setHospital(hospital);
-            const response = await axios.put(`${BACKEND_API_URL}/hospitals/${hospitalId}`, hospital);
+            await axios.put(`${BACKEND_API_URL}/hospitals/${hospitalId}`, hospital);
             navigate("/hospitals");
         } catch (error) {
             console.log(error);

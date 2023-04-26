@@ -5,14 +5,13 @@ import { Link, useParams } from "react-router-dom";
 import { BACKEND_API_URL } from "../../constants";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import axios from "axios";
 import { Hospital } from "../../models/Hospital";
 
 export const HospitalDetails = () => {
     const { hospitalId } = useParams();
     const [hospital, setHospital] = useState<Hospital>();
-    const [loading, setLoading] = useState(false);
+    const [, setLoading] = useState(false);
 
     useEffect(() => {
         const url = `${BACKEND_API_URL}/hospitals/${hospitalId}`
@@ -45,7 +44,7 @@ export const HospitalDetails = () => {
                 <p>Hospital number of beds: {hospital?.numberOfBeds}</p>
                 <p>Doctors:</p>
                 <ul>
-                    {hospital?.doctors?.map((doctor, index) => (
+                    {hospital?.doctors?.map((doctor,) => (
                         <CardContent key={doctor.id}>
                             <li>Doctor details</li>
                             <p >First Name : {doctor?.firstName}</p>
